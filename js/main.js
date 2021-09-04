@@ -14,7 +14,82 @@
     }
     
     // Portfolio subpage filters
-    function portfolio_init() {
+	function portfolio_init() {
+		var portfolio_grid = $('#portfolio_grid');
+		var portfolio_filter_langs = $('#portfolio_filters_langs'),
+			portfolio_filter_platf = $('#portfolio_filters_platf');
+		
+		var Shuffle = window.Shuffle;
+		var shuffle = new Shuffle(portfolio_grid, {
+			speed: 450,
+			itemSelector: 'figure'
+		});
+		
+		$('.site-main-menu').on("click", "a", function (e) {
+			shuffle.update();
+		});
+
+        portfolio_filter_langs.on("click", ".filter", function (e) {
+			shuffle.update();
+			e.preventDefault();
+            $('#portfolio_filters_langs .filter').parent().removeClass('active');
+            $(this).parent().addClass('active');
+			
+			portfolio_filter(shuffle);
+		});
+
+        portfolio_filter_platf.on("click", ".filter", function (e) {
+			shuffle.update();
+			e.preventDefault();
+			
+			if ($(this).attr('data-group') === 'all') {
+				$('#portfolio_filters_platf .filter').parent().removeClass('active');
+				$(this).parent().addClass('active');
+			} else {
+				if ($(this).parent().hasClass('active')) {
+					$(this).parent().removeClass('active');
+					if ($('#portfolio_filters_platf .active').length === 0) {
+						$('#portfolio_filters_platf .filter-all').parent().addClass('active');
+					}
+				} else {
+					$('#portfolio_filters_platf .filter-all').parent().removeClass('active');
+					$(this).parent().addClass('active');
+				}
+			}
+			
+			portfolio_filter(shuffle);
+		});
+		
+	}
+	
+	function portfolio_filter(shuffle, filters) {
+		var filters = {
+			langs: ['all'],
+			platf: ['all']
+		};
+		
+		filters.langs = $('#portfolio_filters_langs .active').children().get().map(x => x.getAttribute('data-group'));
+		filters.platf = $('#portfolio_filters_platf .active').children().get().map(x => x.getAttribute('data-group'));
+		
+		shuffle.filter(function(element) {
+			var eLangs = element.getAttribute('data-langs'),
+				ePlatf = element.getAttribute('data-platf');
+				
+			var bLangs = false,
+				bPlatf = false;
+				
+			bLangs = (filters.langs[0] == 'all' || filters.langs.includes(eLangs));
+			bPlatf = (filters.platf[0] == 'all' || filters.platf.includes(ePlatf));
+				
+			return bLangs & bPlatf;
+		});
+		
+		setTimeout(function(){
+			subpages_resize();
+		}, 500);
+	}
+	
+    /*function portfolio_init() {
         var portfolio_grid = $('#portfolio_grid'),
             portfolio_filter = $('#portfolio_filters');
             
@@ -42,7 +117,7 @@
             });
 
         }
-    }
+    }*/
     // /Portfolio subpage filters
 
     // Contact form validator
@@ -271,9 +346,9 @@
 
         //Google Maps
         $("#map").googleMap();
-        $("#map").addMarker({
+        /*$("#map").addMarker({
             address: "Zagreb, Croatia" // Your Address
-        });
+        });*/
     });
 
 })(jQuery);
