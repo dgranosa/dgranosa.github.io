@@ -1,0 +1,81 @@
+<div id="ajax-page" class="ajax-page-content">
+    <div class="ajax-page-wrapper">
+        <div class="ajax-page-nav">
+            <div class="nav-item ajax-page-prev-next">
+                <a class="ajax-page-load" href="portfolio/suprabit.html"><i class="zmdi zmdi-chevron-left"></i></a>
+                <a class="ajax-page-load" href="portfolio/workout-helper.html"><i class="zmdi zmdi-chevron-right"></i></a>
+            </div>
+            <div class="nav-item ajax-page-close-button">
+                <a id="ajax-page-close-button" href="#"><i class="zmdi zmdi-close"></i></a>
+            </div>
+        </div>
+
+        <div class="ajax-page-title">
+            <h1>Mobile pose estimation</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-7 col-md-7 portfolio-block">
+                <div class="owl-carousel portfolio-page-carousel">
+                    <div class="item">
+                        <img src="images/portfolio/full/pose-1.jpg" alt="" />
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    jQuery(document).ready(function($){
+
+                        $('.portfolio-page-carousel').owlCarousel({
+                            smartSpeed:1200,
+                            items: 1,
+                            loop: true,
+                            dots: true,
+                            nav: true,
+                            navText: false,
+                            margin: 10
+                        });
+
+                    });
+                </script>
+            </div>
+
+            <div class="col-sm-5 col-md-5 portfolio-block">
+                <!-- Project Description -->
+                <div class="block-title">
+                    <h3>Description</h3>
+                </div>
+                <ul class="project-general-info">
+                    <li><p><i class="fa fa-github"></i> <a href="https://github.com/dgranosa/AlebAndroid" target="_blank">https://github.com/dgranosa/AlebAndroid</a></p></li>
+                    <li><p><i class="fa fa-calendar"></i> Jan 5, 2021</p></li>
+                </ul>
+
+				<p class="text-justify">
+					Mobile pose estimation is a mobile application that uses machine learning to get a person's position in an image.<br/>
+					Nowadays, when most people go to gyms and exercise there, during exercise people in their minds wander off and stop counting repetitions, which results in them not knowing where they stopped.<br/>
+					This paper solves this problem by counting instead of user. When the application is turned on, the camera is turned on, which the user points at himself. As long as the user exercises the application itself counts the repetitions and the user does not have to worry about it. The application remembers the maximum number of repetitions performed so far, which encourages the user to more exercises. The application works by taking a single image from the camera and passing it through a neural network that eventually gives the position of a man and thus counts the repetitions 
+				</p>
+				<p class="text-justify"></p>
+				<div class="download-resume">
+					<a href="https://github.com/dgranosa/dgranosa.github.io/raw/main/Zavrsni.docx" class="btn btn-secondary">Download Documentation (Croatian)</a>
+				</div>
+                <!-- /Project Description -->
+
+                <!-- Technology -->
+                <div class="tags-block">
+                    <div class="block-title">
+                        <h3>Technology</h3>
+                    </div>
+                    <ul class="tags">
+                        <li><a>Machine learning</a></li>
+                        <li><a>Tenserflow</a></li>
+                        <li><a>Python</a></li>
+                        <li><a>Mace</a></li>
+                        <li><a>Java</a></li>
+                        <li><a>Android</a></li>
+                    </ul>
+                </div>
+                <!-- /Technology -->
+            </div>
+        </div>
+    </div>
+</div>
